@@ -1,29 +1,14 @@
 # This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 import scipy
 import ants
 import os, sys
 
-
+#directory with the input files
 file_path = "/home/frankservin/Documents/ITK_ANTS_Project/KKI2009-ALL-MPRAGE/"
-
+#directory for the output files
 file_path2 = "/home/frankservin/Documents/KK12009-ALL-MPRAGE-SYNabp/"
-
-
 
 from os import listdir
 from os.path import isfile, join
@@ -34,7 +19,7 @@ file_path_m = []
 file_path2_m = [];
 antsObj = []
 
-
+#reading in the images into an object 
 print(onlyfiles)
 for i in onlyfiles:
     name = file_path + "/" + i
@@ -44,7 +29,7 @@ for i in onlyfiles:
     antsObj.append((ants.image_read(file_path+"/"+i)))
 
     registeredImages = []
-
+#preforming the registration. 
 for i in range(len(antsObj)):
     #registering the image
     print(i)
@@ -58,10 +43,10 @@ for i in range(len(antsObj)):
 
 #for i in range(len(file_path2_m)):
     #filepath of the moving image
-    #should decrement
     #ants.image_write(registeredImages[i]["warpedmovout"], file_path_m[i] + "deformed.nii")
     ants.image_write(mytx["warpedmovout"], file_path2_m[i], ri=True)
+    #file should be written to the output directory
     print('File_written')
-#complete image registration
+
 
 
