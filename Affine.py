@@ -36,6 +36,7 @@ ants_img = []
 
 
 print(onlyfiles)
+#reading in the files and storing them into arrays
 for i in onlyfiles:
     name = file_path + "/" + i
     name2 = file_path2 + "/" + i
@@ -45,11 +46,13 @@ for i in onlyfiles:
 
     registeredImages = []
 
+#preform the reigstration in a loop    
 for i in range(len(ants_img)):
     #registering the image
     print(i)
     print(file_path2_m[i])
     #moving_image = ants.image_read(ants_img[i])
+    #preforming the registration
     mytx = (ants.registration(fixed=fixedImage, moving=ants_img[i], type_of_transform="Affine",
                               aff_mretic="mattes", reg_iterations=(80,40,0)))
     #mywarpedimage = ants.apply_ants_transform(fixed=fixedImage, moving=ants_img[i],
